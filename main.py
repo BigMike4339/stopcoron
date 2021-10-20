@@ -42,14 +42,21 @@ def parse_new_data(soup):
     #date = data_soup.find('h1', {'class': 'cv-section__title cv-section__title_mobile-small'})
 
     data_soup_child = data_soup.find('div', {'class': 'cv-section__content'})
-    new_data = data_soup_child.contents[3].attrs[":charts-data"]
+    #print(data_soup_child.contents[7].attrs[":charts-data"])
+    #exit()
+
+    new_data = data_soup_child.contents[7].attrs[":charts-data"]
     exec(f"__new_data = {new_data}", globals())
     _new_data = __new_data
 
     data_soup = soup.find('section', {'class': 'cv-section'}).find_next_sibling()
 
     data_soup_child = data_soup.find('div', {'class': 'cv-section__content'})
-    new_data = data_soup_child.contents[5].attrs[":spread-data"]
+        
+    #print(data_soup_child.contents[3].attrs[":spread-data"])
+    #exit()
+
+    new_data = data_soup_child.contents[3].attrs[":spread-data"]
     exec(f"__new_data = {new_data}", globals())
     _new_data1 = __new_data
 
