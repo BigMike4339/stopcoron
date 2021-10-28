@@ -4,6 +4,7 @@
 import requests
 from bs4 import BeautifulSoup
 from pprint import pprint
+import re
 
 DEBUG = False
 true = True
@@ -57,6 +58,11 @@ def parse_new_data(soup):
     #exit()
 
     new_data = data_soup_child.contents[3].attrs[":spread-data"]
+    new_data = re.sub('null', 'None', new_data)
+    #print(type(new_data))
+    #print(new_data)
+    #exit()
+
     exec(f"__new_data = {new_data}", globals())
     _new_data1 = __new_data
 
